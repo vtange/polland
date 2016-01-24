@@ -39,7 +39,9 @@ body {
 }
 
 .centered{
-	text-align: center;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
 }
 .vert-centered{
   position: absolute;
@@ -100,19 +102,18 @@ ul{
 
 .login-area{
   text-align: center;
-  width:40%;
+  width:70%;
   transition: all 0.5s ease-in-out;
 }
 .well{
  font-size: 1.5em;
- padding: 10px 20px 10px 20px;
  margin: 0 2% 2% 2%;
  border-radius: 10px;
  border:2px inset rgba(0,0,0,0.5);
  background-color: rgba(0,0,0,0.5);
  color: aliceblue;
 }
-.login-area a{
+.login-area a, .login-area button{
  padding: 10px 20px 10px 20px;
  margin: 0 1% 0 1%;
  border:2px outset rgba(200,200,200,0.7);
