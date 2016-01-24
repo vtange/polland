@@ -11,21 +11,22 @@
 </head>
 <body data-ng-app="VoteApp">
   <div class="content" data-ng-controller="MainCtrl">
+	  
       <div class="polls-viewport">
         <h1>Welcome to Poll-land.</h1>
-        <span class="test-list" data-ng-repeat="user in list">{{user}}</span>
       </div>
+	  <!------------------------------------------------------------------------------------->
       <div class="user-ctrl-bar">
-      <div data-ng-style="show_user()" class="user-ctrl-panel">
-          <h1>Welcome {{activeUser.username}}.</h1>
+		  <div data-ng-style="show_user()" class="user-ctrl-panel">
+			  <h1>Welcome {{activeUser.username}}.</h1>
 
-          <button type="button" data-ng-click="userLogout()">Logout</button>
+		  </div>
       </div>
-        <form class="login-area" data-ng-style="show_login()" data-ng-submit="ProcessLoginDetails()"><h2>{{registerMode}}</h2><p>Username</p><input data-ng-model="LoginDetails.username" class="well" type="text" /><p>Password</p><input data-ng-model="LoginDetails.password"  class="well" type="text"/><p><button type="submit">Submit</button><button type="button" data-ng-click="toggleRegister()">{{toggleRegisterTxt}}</button></p></form>
-      </div>
+	  <!------------------------------------------------------------------------------------->
+	    <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
+        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
   </div>
 </body>
 </html>
 
-        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+
