@@ -1,0 +1,121 @@
+*{
+    box-sizing: border-box;/*reset page*/
+}
+body {
+  margin: 0;/*reset page*/
+  background-color: #9bd;
+}
+.content {
+  position: relative;
+  height: 100%;
+  width:100%;
+}
+.width-container{
+	width:80vw;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#header{
+  position: relative;
+  background-color: #fff;
+  height: 50px;
+  box-shadow: 0px 1px 2px #579;
+}
+
+.left-side{
+    float:left;
+	text-align: left;
+}
+.right-side{
+	float:right;
+	text-align: left;
+}
+.horiz-list{
+	display: inline-block;
+}
+.horiz-list li{
+	display: inline-block;
+}
+
+.centered{
+	text-align: center;
+}
+.vert-centered{
+	position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.vert-centered-txt{
+	line-height: 40px;
+}
+/* BASICS ^ */
+h1{
+  margin: 0;
+}
+ul{
+  margin: 0;
+	padding: 0;
+}
+/* RESET */
+.tab{
+	background: #fff;
+	padding:10px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	margin: 5px;
+	cursor: pointer;
+}
+.chunk{
+	vertical-align: text-top;
+	display: inline-block;
+	width:50%;
+}
+
+/* CUSTOM */
+.polls-viewport{
+  position: relative;
+  display: block;
+  width: 100%;
+  height:50%;
+}
+.polls-viewport h1{
+  position: absolute;
+  bottom:0;
+  text-transform: uppercase;
+  font-style: italic
+}
+.user-ctrl-bar{
+  display: block;
+  width: 100%;
+  height:50%;
+  background-color: brown;
+  color: aliceblue;
+  overflow-x: hidden;
+}
+
+.login-area{
+  display: inline-block;
+  transition: all 0.5s ease-in-out;
+}
+.well{
+ font-size: 1.5em;
+ padding: 10px 20px 10px 20px;
+ margin: 0 2% 2% 2%;
+ border-radius: 10px;
+ border:2px inset rgba(0,0,0,0.5);
+ background-color: rgba(0,0,0,0.5);
+ color: aliceblue;
+}
+.login-area button{
+ padding: 10px 20px 10px 20px;
+ margin: 0 1% 0 1%;
+ border-radius: 10px;
+ background-color: rgba(200,200,200,0.5);
+}
+
+.user-ctrl-panel{
+    position: absolute;
+    left:40px;
+    transition: all 0.5s ease-in-out;
+}
