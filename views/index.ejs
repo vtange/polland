@@ -13,7 +13,9 @@
   <div class="content" data-ng-controller="MainCtrl">
 	  
       <div class="polls-viewport">
-        <h1>Welcome to Poll-land.</h1>
+		  <div id="title">
+	        <h1>Welcome to Poll-land.</h1>
+		  </div>
       </div>
 	  <!------------------------------------------------------------------------------------->
       <div class="user-ctrl-bar">
@@ -23,8 +25,10 @@
 
 		  </div>
 		  <!------------------------------------------------------------------------------------->
-		  <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-          <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+		  <div class="login-area vert-centered">
+		  	<a href="/login" class="btn btn-default"><h1><span class="fa fa-user"></span> Login</h1></a>
+          	<a href="/signup" class="btn btn-default"><h1><span class="fa fa-user"></span> Signup</h1></a>
+		  </div>
       </div>
 	  <!------------------------------------------------------------------------------------->
   </div>
