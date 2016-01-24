@@ -17,14 +17,16 @@
       </div>
 	  <!------------------------------------------------------------------------------------->
       <div class="user-ctrl-bar">
-		  <div data-ng-style="show_user()" class="user-ctrl-panel">
+		  <!------------------------------------------------------------------------------------->
+		  <div data-ng-if="activeUser" class="user-ctrl-panel">
 			  <h1>Welcome {{activeUser.username}}.</h1>
 
 		  </div>
+		  <!------------------------------------------------------------------------------------->
+		  <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
+          <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
       </div>
 	  <!------------------------------------------------------------------------------------->
-	    <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
   </div>
 </body>
 </html>
