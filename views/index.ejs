@@ -20,10 +20,13 @@
 	  <!------------------------------------------------------------------------------------->
       <div class="user-ctrl-bar">
 		  <!------------------------------------------------------------------------------------->
-		  <div data-ng-if="activeUser" class="user-ctrl-panel">
-			  <h1>Welcome {{activeUser.username}}.</h1>
+		      <% if (user) { %>
+		  
+		  <div class="user-ctrl-panel">
+			  <h1>Welcome <%= user.local.email  %>.</h1>
 
 		  </div>
+		      <% } %>
 		  <!------------------------------------------------------------------------------------->
 		  <div class="login-area vert-centered">
 		  	<a href="/login" class="btn btn-default"><h1><span class="fa fa-user"></span> Login</h1></a>
