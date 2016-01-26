@@ -23,8 +23,8 @@
 		      <% if (user) { %>
 		  
 		  <div class="user-ctrl-panel">
-			  <h1>Welcome <%= user.local.email  %>.</h1>
-
+			  <h1>Welcome <%= user.local.username  %>.</h1>
+			  <h1><a href="/logout">Log Out</a></h1>
 		  </div>
 		      <% } else { %>
 		  <!------------------------------------------------------------------------------------->
