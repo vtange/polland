@@ -26,12 +26,13 @@
 			  <h1>Welcome <%= user.local.email  %>.</h1>
 
 		  </div>
-		      <% } %>
+		      <% } else { %>
 		  <!------------------------------------------------------------------------------------->
 		  <div class="login-area vert-centered">
 		  	<a href="/login" class="btn btn-default"><h1><span class="fa fa-user"></span> Login</h1></a>
           	<a href="/signup" class="btn btn-default"><h1><span class="fa fa-user"></span> Signup</h1></a>
 		  </div>
+		  	  <% } %>
       </div>
 	  <!------------------------------------------------------------------------------------->
   </div>
