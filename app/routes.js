@@ -175,7 +175,7 @@ module.exports = function(app, passport) {
 			  return res.redirect('back');
 			}
 
-			user.local.password = req.body.password;
+			user.local.password = user.generateHash(req.body.password);
 			user.local.resetPasswordToken = undefined;
 			user.local.resetPasswordExpires = undefined;
 
