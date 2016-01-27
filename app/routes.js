@@ -1,9 +1,11 @@
 console.log("	APP/ROUTES.JS")
 var asyncc = require('async');
 var crypto = require('crypto');
-var nodemailer = require('nodemailer');
 var User            = require('../app/models/user');
 var flash    = require('connect-flash');
+
+var nodemailer = require('nodemailer');
+
 // app/routes.js
 module.exports = function(app, passport) {
 
@@ -125,15 +127,15 @@ module.exports = function(app, passport) {
 		  });
 		},
 		function(token, user, done) {
-		  var smtpTransport = nodemailer.createTransport('SMTP', {
-			service: 'SendGrid',
+			var transporter = nodemailer.createTransport({
+			service: 'Gmail',
 			auth: {
-			  user: '!!! YOUR SENDGRID USERNAME !!!',
-			  pass: '!!! YOUR SENDGRID PASSWORD !!!'
+				user: '@gmail.com',
+				pass: ''
 			}
-		  });
+			});
 		  var mailOptions = {
-			to: user.email,
+			to: user.local.email,
 			from: 'passwordreset@demo.com',
 			subject: 'Node.js Password Reset',
 			text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
@@ -141,8 +143,8 @@ module.exports = function(app, passport) {
 			  'http://' + req.headers.host + '/reset/' + token + '\n\n' +
 			  'If you did not request this, please ignore this email and your password will remain unchanged.\n'
 		  };
-		  smtpTransport.sendMail(mailOptions, function(err) {
-			req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+		  transporter.sendMail(mailOptions, function(err) {
+			req.flash('info', 'An e-mail has been sent to ' + user.local.email + ' with further instructions.');
 			done(err, 'done');
 		  });
 		}
