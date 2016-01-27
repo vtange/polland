@@ -2,13 +2,22 @@
 <!doctype html>
 <html>
 <head>
-    <title>Polland Forgot</title>
+    <title>Reset Password</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-    <link rel="stylesheet" type="text/css" href="style-0.css"/>
 	<style>
         body        { text-align:center; padding-top:80px; color:white; background-color: brown;  }
 		a			{ color:yellow }
+		.well{
+		 height:50px;
+		 font-size: 1.5em;
+		 padding: 0 2px 2px 12px;
+		 margin: 0 2% 2% 2%;
+		 border-radius: 10px;
+		 border:2px inset rgba(0,0,0,0.5);
+		 background-color: rgba(0,0,0,0.5);
+		 color: aliceblue;
+		}
     </style>
 </head>
 <body>
@@ -24,9 +33,9 @@
     <% } %>
 
     <!-- LOGIN FORM -->
-	<form class="login-area centered" action="/reset" method="post">
+	<form class="login-area centered" action="/reset/<%= token %>" method="post">
 		<div class="form-group">
-			<label>Password</label>
+			<label>New Password</label>
 			<input type="text" class="form-control well" name="password">
 		</div>
 

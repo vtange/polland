@@ -159,6 +159,7 @@ module.exports = function(app, passport) {
 		  return res.redirect('/forgot');
 		}
 		res.render('reset.ejs', {
+		  token: req.params.token,
 		  message: req.flash('info'),
 		  user: req.user
 		});
