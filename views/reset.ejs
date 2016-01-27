@@ -1,0 +1,41 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Polland Forgot</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <link rel="stylesheet" type="text/css" href="style-0.css"/>
+	<style>
+        body        { text-align:center; padding-top:80px; color:white; background-color: brown;  }
+		a			{ color:yellow }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+
+    <h1><span class="fa fa-sign-in"></span> Reset Password</h1>
+
+    <!-- show any messages that come back with authentication -->
+    <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+    <!-- LOGIN FORM -->
+	<form class="login-area centered" action="/reset" method="post">
+		<div class="form-group">
+			<label>Password</label>
+			<input type="text" class="form-control well" name="password">
+		</div>
+
+		<button type="submit" class="btn btn-lg">Change Password</button>
+	</form>
+    <hr>
+
+</div>
+
+</div>
+</body>
+</html>

@@ -153,7 +153,61 @@ module.exports = function(app, passport) {
 		res.redirect('/forgot');
 	  });
 	});
-	
+	app.get('/reset/:token', function(req, res) {
+	  User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+		if (!user) {
+		  req.flash('error', 'Password reset token is invalid or has expired.');
+		  return res.redirect('/forgot');
+		}
+		res.render('reset.ejs', {
+		  user: req.user
+		});
+	  });
+	});
+	app.post('/reset/:token', function(req, res) {
+	  asyncc.waterfall([
+		function(done) {
+		  User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+			if (!user) {
+			  req.flash('error', 'Password reset token is invalid or has expired.');
+			  return res.redirect('back');
+			}
+
+			user.password = req.body.password;
+			user.resetPasswordToken = undefined;
+			user.resetPasswordExpires = undefined;
+
+			user.save(function(err) {
+			  req.logIn(user, function(err) {
+				done(err, user);
+			  });
+			});
+		  });
+		},
+		function(user, done) {
+			var transporter = nodemailer.createTransport({
+			service: 'Gmail',
+			auth: {
+				user: '@gmail.com',
+				pass: ''
+			}
+			});
+		  var mailOptions = {
+			to: user.local.email,
+			from: 'passwordreset@demo.com',
+			subject: 'Your password has been changed',
+			text: 'Hello,\n\n' +
+			  'This is a confirmation that the password for your account ' + user.local.email + ' has just been changed.\n'
+		  };
+		  transporter.sendMail(mailOptions, function(err) {
+			req.flash('success', 'Success! Your password has been changed.');
+			done(err);
+		  });
+		}
+	  ], function(err) {
+		res.redirect('/');
+	  });
+	});
 };
 
 // route middleware to make sure a user is logged in
