@@ -163,7 +163,6 @@ module.exports = function(app, passport) {
                 successRedirect : '/profile',
                 failureRedirect : '/'
             }));
-};
 
 
 
