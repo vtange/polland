@@ -8,8 +8,11 @@ var pollSchema = mongoose.Schema({
         question     : String,
         asker        : String,
 	    postDate	: Date,
-        options     : Array
-   
+        choices     : [
+		{	choice: String, votes: Number },
+		{	choice: String, votes: Number },
+		{	choice: String, votes: Number }
+		]
 });
 
 // methods ======================
