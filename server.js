@@ -18,7 +18,7 @@ console.log("SERVER.JS")
 var mongoose = require('mongoose');
 var configDB = require('./config/database.js');
 mongoose.connect(configDB.url); // connect to our database
-require('./config/initDB.js')	// initialize DB, give some mock Polls
+require('./config/initDB.js')()	// initialize DB, give some mock Polls
 
 
 var passport = require('passport');
