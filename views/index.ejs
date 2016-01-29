@@ -10,11 +10,11 @@
     <script type="text/javascript" src="app.js"></script>
 </head>
 <body data-ng-app="VoteApp">
-  <div class="content" data-ng-controller="MainCtrl">
+  <div class="content" data-ng-controller="MainCtrl" ng-init="init('<%= otherPolls %>')">
 	  
       <div class="polls-viewport">
 		  	<!-- LOAD OTHERS' POLLS TO CHECKOUT AND VOTE ON -->
-		  <%= otherPolls %>
+		  {{otherPolls}}
 		  	<!-- LOAD OTHERS' POLLS TO CHECKOUT AND VOTE ON -->
 		  
 		  
