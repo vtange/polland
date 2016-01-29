@@ -20,8 +20,7 @@ module.exports = function(app, passport) {
 			
 		    res.render('index.ejs', {
 				user : req.user, // get the user out of session and pass to template
-				// populate list of polls
-				otherPolls : JSON.stringify(otherPolls)
+				packageForAngular : JSON.stringify([req.user,otherPolls])
 			}); // load the index.ejs file
 			
 		})
