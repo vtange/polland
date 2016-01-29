@@ -76,13 +76,14 @@ ul{
 }
 
 /* CUSTOM */
-
+/* the white part */
 .polls-viewport{
   position: relative;
   display: block;
   width: 100%;
   height:60%;
 }
+/* 'POLL-LAND' */
 .polls-viewport #title{
   position: absolute;
   bottom:0;
@@ -90,6 +91,7 @@ ul{
   font-style: italic;
   transition: all 0.5s ease-in-out;
 }
+/* the red part */
 .user-ctrl-bar{
   position: relative;
   display: block;
@@ -99,12 +101,13 @@ ul{
   color: aliceblue;
   overflow-x: hidden;
 }
-
+/* centers and sizes forms */
 .login-area{
   text-align: center;
   width:70%;
   transition: all 0.5s ease-in-out;
 }
+/* form element darken transparent, well effect */
 .well{
  height:50px;
  font-size: 1.5em;
@@ -115,6 +118,7 @@ ul{
  background-color: rgba(0,0,0,0.5);
  color: aliceblue;
 }
+/* form element button design */
 .login-area a, .login-area button{
  padding: 10px 20px 10px 20px;
  margin: 0 1% 0 1%;
@@ -122,10 +126,20 @@ ul{
  border-radius: 10px;
  background-color: rgba(200,200,200,0.7);
 }
+/* form element button design when selected */
 .login-area a:active{
  background-color: rgba(200,200,200,0.7);
 }
+/* stuff inside red part when logged in */
 .user-ctrl-panel{
     position: absolute;
     left:40px;
+}
+
+
+/* poll sideways list */
+.poll-list{
+	display:flex;
+	
+	
 }
