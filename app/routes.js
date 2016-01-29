@@ -1,5 +1,8 @@
 console.log("	APP/ROUTES.JS")
 
+// load up the poll model
+var Poll       = require('../app/models/poll');
+
 // app/routes.js
 module.exports = function(app, passport) {
 
@@ -7,17 +10,21 @@ module.exports = function(app, passport) {
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function(req, res) {
-        res.render('index.ejs', {
-            user : req.user // get the user out of session and pass to template
-			// populate list of polls
+		//generate array of polls
+		var otherPolls = [];
+		Poll.find(function(err,poll){
+		if(err){
+			throw err;
+		}
+		otherPolls.push(poll);
 			
+		    res.render('index.ejs', {
+				user : req.user, // get the user out of session and pass to template
+				// populate list of polls
+				otherPolls : otherPolls
+			}); // load the index.ejs file
 			
-			
-			
-			
-			
-			
-        }); // load the index.ejs file
+		})
     });
 
     // =====================================
