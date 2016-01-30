@@ -42,6 +42,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./app/poll-routes.js')(app); // load our routes for poll interaction
 require('./app/socialMedia.js')(app, passport); // load social media linking
 require('./app/passForget.js')(app); // load password forgot functionality
 console.log("SERVER.JS")
