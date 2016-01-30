@@ -10,6 +10,7 @@
         body        { text-align:center; padding-top:80px; color:inherit; background-color: #eee;  }
 		a			{ color:yellow }
     </style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script type="text/javascript" src="poll/Chart.min.js"></script>
     <script type="text/javascript" src="poll/chartbuilder.js"></script>
@@ -18,33 +19,28 @@
 <div class="container" data-ng-app="chartBuilder" data-ng-controller="MainCtrl">
 
 <div class="col-sm-6 ">
-<form>
-	
-    <div class="form-group">
-        <label>Question</label>
-        <input type="text" name="question" class="form-control" placeholder="Your Question" data-ng-model="newPoll.question" data-ng-init="chartPreview()">
-    </div>
-    <div class="form-group">
-        <label>Chart Type</label>
-		<select name="chartType" data-ng-model="newPoll.chartType">
-			<option data-ng-click="chartPreview()" value="Pie" selected>Pie</option>
-			<option data-ng-click="chartPreview()" value="Bar">Bar</option>
-			<option data-ng-click="chartPreview()" value="Line">Line</option>
-		</select>
-    </div>
-    <div class="form-group">
-        <label>Choice #1</label>
-        <input type="text" name="choice1" class="form-control" placeholder="Choice #1" data-ng-model="newPoll.choices[0].choice">
-    </div>
-    <div class="form-group">
-        <label>Choice #2</label>
-        <input type="text" name="choice2" class="form-control" placeholder="Choice #2" data-ng-model="newPoll.choices[1].choice">
-    </div>
-    <div class="form-group">
-        <label>Choice #3</label>
-        <input type="text" name="choice3" class="form-control" placeholder="Choice #3" data-ng-model="newPoll.choices[2].choice">
-    </div>
-
+	<h1>Create a new Poll</h1>
+<form id="form" data-ng-submit="createPoll()">
+	<div id="inputs">
+		<div class="form-group">
+			<label>Question</label>
+			<input type="text" name="question" class="form-control" placeholder="Your Question" data-ng-model="newPoll.question" data-ng-init="chartPreview()">
+		</div>
+		<div class="form-group">
+			<label>Chart Type</label>
+			<select name="chartType" data-ng-model="newPoll.chartType">
+				<option data-ng-click="chartPreview()" value="Pie" selected>Pie</option>
+				<option data-ng-click="chartPreview()" value="Bar">Bar</option>
+				<option data-ng-click="chartPreview()" value="Line">Line</option>
+			</select>
+		</div>
+		<div class="form-group" data-ng-repeat="choice in newPoll.choices">
+			<label>{{'Choice #'+($index+1)}}</label>
+			<input type="text" class="form-control" placeholder="{{'Choice #'+($index+1)}}" data-ng-model="newPoll.choices[$index].choice">
+		</div>
+	</div>
+	<button type="button" class="btn btn-lg btn-success btn-block" data-ng-click="addChoice()">Add a Choice</button>
+	<button type="button" class="btn btn-lg btn-danger btn-block" data-ng-click="delChoice()">Remove a Choice</button>
     <button type="submit" class="btn btn-lg btn-primary btn-block">Create Poll</button>
 </form>
 

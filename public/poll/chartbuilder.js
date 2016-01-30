@@ -72,10 +72,9 @@ app.controller('MainCtrl', ['$scope', function($scope){
 			}
 		]
 	};
-	$scope.newPoll = {chartType:"Pie",choices:[]};
-var context = document.getElementById('chart').getContext('2d');
-var prevChart = new Chart(context).Pie(pieData);
-	
+	var context = document.getElementById('chart').getContext('2d');
+	var prevChart = new Chart(context).Pie(pieData);
+	$scope.newPoll = {chartType:"Pie",choices:[{ choice: '', votes: 0 },{ choice: '', votes: 0 },{ choice: '', votes: 0 }]};
 	$scope.chartPreview = function(){
 
 		if($scope.newPoll.chartType==="Pie"){
@@ -85,13 +84,26 @@ var prevChart = new Chart(context).Pie(pieData);
 		else if($scope.newPoll.chartType==="Bar"){
 			prevChart.destroy();
 			prevChart = new Chart(context).Bar(barData);
-		}		
+		}
 		else if($scope.newPoll.chartType==="Line"){
 			prevChart.destroy();
 			prevChart = new Chart(context).Line(lineData);
 		}
 	}
-
+	$scope.addChoice = function(){
+		$scope.newPoll.choices.push({ choice: '', votes: 0 });
+	}
+	$scope.delChoice = function(){
+		if($scope.newPoll.choices.length > 2){
+			$scope.newPoll.choices.splice($scope.newPoll.choices.length-1,1);
+		}
+	}
+	$scope.createPoll = function(){
+		console.log("creating poll...")
+		
+		
+		
+	}
 	}]);//end of controller
   //end of function
 })();
