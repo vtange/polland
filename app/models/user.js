@@ -30,7 +30,8 @@ var userSchema = mongoose.Schema({
         token        : String,
         email        : String,
         name         : String
-    }
+    },
+	polls			 :[{ type: mongoose.Schema.Types.ObjectId, ref: 'Poll' }]
 
 });
 

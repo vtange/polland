@@ -7,9 +7,10 @@ var shortid  = require('shortid');
 var pollSchema = mongoose.Schema({
 
         question     : String,
-        asker        : String,
+        asker        : { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 	    postDate	: Date,
-	    link	: String,
+	    link		: String,
+	    chartType	: String,
         choices     : [
 		{	choice: String, votes: Number },
 		{	choice: String, votes: Number },
