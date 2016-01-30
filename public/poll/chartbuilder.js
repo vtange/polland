@@ -1,4 +1,4 @@
-(function(){
+document.addEventListener("DOMContentLoaded", function() {
 //Data
 	var pieData = [
    {
@@ -25,9 +25,10 @@
 	
 	
 // Get the context of the canvas element we want to select
+
 var context = document.getElementById('skills').getContext('2d');
 var skillsChart = new Chart(context).Pie(pieData);
 	
 	
 	
-})()
+});
