@@ -13,7 +13,6 @@ var bodyParser   = require('body-parser');
 var methodOverride = require('method-override');
 var session      = require('express-session');
 
-console.log("SERVER.JS")
 // configuration ===============================================================
 var mongoose = require('mongoose');
 var configDB = require('./config/database.js');
