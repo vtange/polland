@@ -70,11 +70,11 @@ app.controller('MainCtrl', ['$scope', function($scope){
 		  color: '#6AE128'
 	   }
 	];
-	$scope.newPoll = {};
+	$scope.newPoll = {chartType:"Pie",choices:[]};
 var context = document.getElementById('chart').getContext('2d');
 var skillsChart;
 	
-	function chartPreview(){
+	$scope.chartPreview = function(){
 
 		if($scope.newPoll.chartType==="Pie"){
 			skillsChart = new Chart(context).Pie(pieData);

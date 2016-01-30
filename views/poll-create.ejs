@@ -22,14 +22,14 @@
 	
     <div class="form-group">
         <label>Question</label>
-        <input type="text" name="question" class="form-control" placeholder="Your Question" data-ng-model="newPoll.question">
+        <input type="text" name="question" class="form-control" placeholder="Your Question" data-ng-model="newPoll.question" data-ng-init="chartPreview()">
     </div>
     <div class="form-group">
         <label>Chart Type</label>
 		<select name="chartType" data-ng-model="newPoll.chartType">
-			<option value="Pie">Pie</option>
-			<option value="Bar">Bar</option>
-			<option value="Line">Line</option>
+			<option data-ng-click="chartPreview()" value="Pie" selected>Pie</option>
+			<option data-ng-click="chartPreview()" value="Bar">Bar</option>
+			<option data-ng-click="chartPreview()" value="Line">Line</option>
 		</select>
     </div>
     <div class="form-group">
