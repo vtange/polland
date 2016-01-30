@@ -16,6 +16,19 @@ module.exports = function(app) {
             user : req.user // get the user out of session and pass to template
         });
     });
+	
+	// =====================================
+    // VIEW POLL =====================//DROPPED/ USE FOR OPTIONS
+    // =====================================
+    // you don't have to be logged in to view a poll
+    // will need to find a poll by link in mongo DB , and return it as a package.
+    app.get('/poll/:pollLink', function(req, res) {
+		var link = req.params.pollLink;
+        res.render('poll-view.ejs', {
+            user : req.user, // get the user out of session and pass to template, if user == author, editable.
+			link : link
+        });
+    });
 
 	
 

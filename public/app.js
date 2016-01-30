@@ -15,6 +15,7 @@ app.controller('MainCtrl', ['$scope', 'UserService', function($scope, UserServic
 						question: 'Is Dart awesome?',
 						asker        : 'Ford',
 						postDate	: 'February 4, 2016',
+						link		: "F42af-493k",
 						choices: [
 						  { choice: 'Of course!', votes: 0 },
 						  { choice: 'Eh', votes: 0 },
@@ -25,6 +26,7 @@ app.controller('MainCtrl', ['$scope', 'UserService', function($scope, UserServic
 						question: 'Is it OK to eat ice cream when you are sick?',
 						asker        : 'Thomas',
 						postDate	: 'July 31, 2015',
+						link		: "43ase2-845m",
 						choices: [
 						  { choice: '100% no', votes: 0 },
 						  { choice: '200% no', votes: 0 },
