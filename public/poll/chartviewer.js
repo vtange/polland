@@ -1,9 +1,5 @@
-(function() {
-    //start of function
-  var app = angular.module('chartBuilder', []);
-
-app.controller('MainCtrl', ['$scope', function($scope){
-
+document.addEventListener("DOMContentLoaded", function() {
+//Data
 	var pieData = [
 	   {
 		  value: 25,
@@ -70,23 +66,12 @@ app.controller('MainCtrl', ['$scope', function($scope){
 		  color: '#6AE128'
 	   }
 	];
-	$scope.newPoll = {};
-var context = document.getElementById('chart').getContext('2d');
-var skillsChart;
 	
-	function chartPreview(){
+// Get the context of the canvas element we want to select
 
-		if($scope.newPoll.chartType==="Pie"){
-			skillsChart = new Chart(context).Pie(pieData);
-		}
-		else if($scope.newPoll.chartType==="Bar"){
-			skillsChart = new Chart(context).Bar(barData);
-		}		
-		else if($scope.newPoll.chartType==="Line"){
-			skillsChart = new Chart(context).Line(lineData);
-		}
-	}
-
-	}]);//end of controller
-  //end of function
-})();
+var context = document.getElementById('chart').getContext('2d');
+var skillsChart = new Chart(context).Pie(pieData);
+	
+	
+	
+});
