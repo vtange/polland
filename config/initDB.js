@@ -15,6 +15,7 @@ module.exports = function(){
 						question: 'Is Meteor awesome?',
 						asker        : 'Anonymous',
 						postDate	: 'December 31, 2015',
+						chartType	: 'Pie',
 						link	: shortid.generate(),
 						choices: [
 						  { choice: 'Of course!', votes: 0 },
@@ -26,8 +27,11 @@ module.exports = function(){
 						question: 'Is CSS3 Flexbox the greatest thing since array_slice(bread)?',
 						asker        : 'Anonymous',
 						postDate	: 'December 31, 2015',
+						chartType	: 'Pie',
 						link	: shortid.generate(),
 						choices: [
+						  { choice: 'No', votes: 0 },
+						  { choice: 'Dunno', votes: 0 },
 						  { choice: '100% yes', votes: 0 },
 						  { choice: '200% yes', votes: 0 },
 						  { choice: '300% yes', votes: 0 }
