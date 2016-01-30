@@ -2,6 +2,7 @@ console.log("	CONFIG/INITDB.JS");
 
 // load up the poll model
 var Poll       = require('../app/models/poll');
+var shortid  = require('shortid');
 
 module.exports = function(){
 				Poll.findOne(function(err, poll){
@@ -14,6 +15,7 @@ module.exports = function(){
 						question: 'Is Meteor awesome?',
 						asker        : 'Anonymous',
 						postDate	: 'December 31, 2015',
+						link	: shortid.generate(),
 						choices: [
 						  { choice: 'Of course!', votes: 0 },
 						  { choice: 'Eh', votes: 0 },
@@ -24,6 +26,7 @@ module.exports = function(){
 						question: 'Is CSS3 Flexbox the greatest thing since array_slice(bread)?',
 						asker        : 'Anonymous',
 						postDate	: 'December 31, 2015',
+						link	: shortid.generate(),
 						choices: [
 						  { choice: '100% yes', votes: 0 },
 						  { choice: '200% yes', votes: 0 },
