@@ -32,13 +32,14 @@
 		      <% if (user) { %>
 		  
 		  <div class="user-ctrl-panel">
-			  <h1>Welcome <a href="/profile"><%= user.local.username  %>.</a></h1>
+			  <h1><a class="blueless-link" href="/profile"><%= user.local.username  %></a>'s Polls:</h1>
 
 			  <!-- LOAD USER'S POLLS TO MANAGE -->
-			  <div class="poll-list">
+			  <div class="flex-container poll-list">
 			  	<div class="poll-thumb" data-ng-repeat="poll in myPolls">
-					<span>{{poll.question}}</span>
+					<span><h3>{{poll.question}}</h3></span>
 				</div>
+				<a class="blueless-link" href="/newpoll"><div class="poll-thumb add-poll-btn"><span><h3>Create a New Poll</h3></span><p class="big-plus vert-centered">+</p></div></a>
 			  </div>
 			  <!-- LOAD USER'S POLLS TO MANAGE -->
 
