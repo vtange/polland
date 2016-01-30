@@ -10,20 +10,23 @@
         body        { text-align:center; padding-top:80px; color:inherit; background-color: #eee;  }
 		a			{ color:yellow }
     </style>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script type="text/javascript" src="poll/Chart.min.js"></script>
+    <script type="text/javascript" src="poll/chartbuilder.js"></script>
 </head>
 <body>
-<div class="container">
+<div class="container" data-ng-app="chartBuilder" data-ng-controller="MainCtrl">
 
 <div class="col-sm-6 ">
 <form>
 	
     <div class="form-group">
         <label>Question</label>
-        <input type="text" name="question" class="form-control" placeholder="Your Question">
+        <input type="text" name="question" class="form-control" placeholder="Your Question" data-ng-model="newPoll.question">
     </div>
     <div class="form-group">
         <label>Chart Type</label>
-		<select name="chartType">
+		<select name="chartType" data-ng-model="newPoll.chartType">
 			<option value="Pie">Pie</option>
 			<option value="Bar">Bar</option>
 			<option value="Line">Line</option>
@@ -31,21 +34,22 @@
     </div>
     <div class="form-group">
         <label>Choice #1</label>
-        <input type="text" name="choice1" class="form-control" placeholder="Choice #1">
+        <input type="text" name="choice1" class="form-control" placeholder="Choice #1" data-ng-model="newPoll.choices[0].choice">
     </div>
     <div class="form-group">
         <label>Choice #2</label>
-        <input type="text" name="choice2" class="form-control" placeholder="Choice #2">
+        <input type="text" name="choice2" class="form-control" placeholder="Choice #2" data-ng-model="newPoll.choices[1].choice">
     </div>
     <div class="form-group">
         <label>Choice #3</label>
-        <input type="text" name="choice3" class="form-control" placeholder="Choice #3">
+        <input type="text" name="choice3" class="form-control" placeholder="Choice #3" data-ng-model="newPoll.choices[2].choice">
     </div>
 
     <button type="submit" class="btn btn-lg btn-primary btn-block">Create Poll</button>
 </form>
 
 </div>
+			<p>{{newPoll}}</p>
 <div class="col-sm-6 ">
 	<div id="chartPreview">
 		<canvas id="chart" width="400" height="400"></canvas>
