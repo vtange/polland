@@ -24,7 +24,9 @@ var passport = require('passport');
 require('./config/passport')(passport); // pass passport for configuration
 
 // set up our express application
-app.use(express.static(__dirname + '/public'));     // set the static files location /public/img will be /img for users
+app.use("/", express.static(__dirname + '/public'));     // set the static files location /public/img will be /img for users
+app.use("/poll", express.static(__dirname + '/public'));
+
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.urlencoded({ extended: false }))    // parse application/x-www-form-urlencoded
