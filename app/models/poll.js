@@ -3,6 +3,8 @@
 var mongoose = require('mongoose');
 var shortid  = require('shortid');
 
+var choiceSchema = mongoose.Schema({	choice: String, votes: Number },{ _id:false });
+
 // define the schema for our user model
 var pollSchema = mongoose.Schema({
 
@@ -11,11 +13,7 @@ var pollSchema = mongoose.Schema({
 	    postDate	: Date,
 	    link		: String,
 	    chartType	: String,
-        choices     : [
-		{	choice: String, votes: Number },
-		{	choice: String, votes: Number },
-		{	choice: String, votes: Number }
-		]
+        choices     : [choiceSchema]
 });
 
 // methods ======================
