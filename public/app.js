@@ -17,6 +17,7 @@ app.controller('MainCtrl', ['$scope', 'UserService', function($scope, UserServic
 	$scope.init = function(package) {
 		$scope.activeUser = package[0];
 		$scope.otherPolls = package[1][0];
+		$scope.myPolls = package[2][0];
 	}
 	
 }]);//end of controller

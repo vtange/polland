@@ -11,7 +11,16 @@ module.exports = function(app, passport) {
     // =====================================
     app.get('/', function(req, res) {
 		//generate array of polls
+		var myPolls = [];
 		var otherPolls = [];
+		if (req.user){
+			Poll.find({asker:req.user},function(err,poll){
+				if(err){
+					throw err;
+				}
+				myPolls.push(poll);
+			})
+		}
 		Poll.find(function(err,poll){
 		if(err){
 			throw err;
@@ -20,7 +29,7 @@ module.exports = function(app, passport) {
 			
 		    res.render('index.ejs', {
 				user : req.user, // get the user out of session and pass to template
-				packageForAngular : JSON.stringify([req.user,otherPolls])
+				packageForAngular : JSON.stringify([req.user,otherPolls,myPolls])
 			}); // load the index.ejs file
 			
 		})
