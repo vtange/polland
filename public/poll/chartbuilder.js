@@ -99,7 +99,6 @@ app.controller('MainCtrl', ['$scope', '$http', '$window', function($scope, $http
 		}
 	}
 	$scope.createPoll = function(){
-		var formData = new FormData();
 		$http.post($window.location.href,$scope.newPoll).
         success(function(data) {
             console.log("posted successfully");
