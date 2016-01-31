@@ -2,6 +2,7 @@ console.log("	APP/POLL-ROUTES.JS")
 
 // load up the poll model
 var Poll       = require('../app/models/poll');
+var shortid  = require('shortid');
 
 // app/routes.js
 module.exports = function(app) {
@@ -17,8 +18,27 @@ module.exports = function(app) {
 	
 	// get user from session
     app.post('/newpoll', function(req, res) {
-        console.log(req.user);
-		console.log(req.body);
+        var author = req.user;
+		var incoming = req.body;
+		var newPoll            = new Poll();
+		newPoll.question = incoming.question;
+		newPoll.asker = author;
+		newPoll.postDate = Date.now();
+		newPoll.chartType = incoming.chartType;
+		newPoll.link = shortid.generate();
+		newPoll.choices = incoming.choices;
+		newPoll.save(function(err) {
+			if (err)
+				throw err;
+			author.polls.push(newPoll);
+			author.save(function(err){
+				if(err)
+					throw err;
+				console.log('author updated')
+			})
+			console.log('saved a new poll')
+		});
+		res.redirect('/');
     });	
 	// =====================================
     // VIEW POLL =====================//DROPPED/ USE FOR OPTIONS
