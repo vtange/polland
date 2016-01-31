@@ -12,11 +12,14 @@ module.exports = function(app) {
     // you have to be logged in to make or edit a poll
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/newpoll', isLoggedIn, function(req, res) {
-        res.render('poll-create.ejs', {
-            user : req.user // get the user out of session and pass to template
-        });
+        res.render('poll-create.ejs');
     });
 	
+	// get user from session
+    app.post('/newpoll', function(req, res) {
+        console.log(req.user);
+		console.log(req.body);
+    });	
 	// =====================================
     // VIEW POLL =====================//DROPPED/ USE FOR OPTIONS
     // =====================================

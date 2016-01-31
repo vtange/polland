@@ -2,7 +2,7 @@
     //start of function
   var app = angular.module('chartBuilder', []);
 
-app.controller('MainCtrl', ['$scope', function($scope){
+app.controller('MainCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
 
 	var pieData = [
 	   {
@@ -99,10 +99,13 @@ app.controller('MainCtrl', ['$scope', function($scope){
 		}
 	}
 	$scope.createPoll = function(){
-		console.log("creating poll...")
-		
-		
-		
+		var formData = new FormData();
+		$http.post($window.location.href,$scope.newPoll).
+        success(function(data) {
+            console.log("posted successfully");
+        }).error(function(data) {
+            console.error("error in posting");
+        })
 	}
 	}]);//end of controller
   //end of function
