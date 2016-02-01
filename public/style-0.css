@@ -9,6 +9,7 @@ body {
 .content {
   position: relative;
   height: 100%;
+	overflow-y: hidden;
 }
 .width-container{
 	width:80vw;
@@ -81,7 +82,7 @@ ul{
   position: relative;
   display: block;
   width: 100%;
-  height:60%;
+  height:55%;
 }
 /* 'POLL-LAND' */
 .polls-viewport #title{
@@ -96,10 +97,9 @@ ul{
   position: relative;
   display: block;
   width: 100%;
-  height:40%;
+  height:45%;
   background-color: brown;
   color: aliceblue;
-  overflow-x: hidden;
 }
 /* centers and sizes forms */
 .login-area{
@@ -135,6 +135,9 @@ ul{
     position: absolute;
     left:40px;
 }
+.user-ctrl-panel h1{
+    margin-bottom: 15px;
+}
 
 
 /* poll sideways list */
@@ -147,7 +150,6 @@ ul{
 .poll-list{
 	border:2px solid blue;
 	border-radius:10px;
-	margin-top:15px;
 }
 .poll-thumb{
 	position:relative;
@@ -155,7 +157,8 @@ ul{
 	padding:20px;
 	width:27vh;
 	height:27vh;
-	background-color: rgba(0,0,0,0.7);
+	background-color: rgba(255,255,255,0.4);
+	box-shadow: 3px 3px 10px grey, inset 0px 0px 10px  grey ;
 	border-radius:10px;
 	cursor:pointer;
 	-webkit-user-select: none; /* Chrome/Safari */        

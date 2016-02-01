@@ -39,10 +39,10 @@
 
 			  <!-- LOAD USER'S POLLS TO MANAGE -->
 			  <div class="flex-container poll-list">
+				<a class="blueless-link" href="/newpoll"><div class="poll-thumb add-poll-btn"><span><h3>Create a New Poll</h3></span><p class="big-plus vert-centered">+</p></div></a>
 			  	<a class="blueless-link" data-ng-repeat="poll in myPolls" data-ng-href="/poll/{{poll.link}}"><div class="poll-thumb">
 					<span><h3>{{poll.question}}</h3></span>
 				</div></a>
-				<a class="blueless-link" href="/newpoll"><div class="poll-thumb add-poll-btn"><span><h3>Create a New Poll</h3></span><p class="big-plus vert-centered">+</p></div></a>
 			  </div>
 			  <!-- LOAD USER'S POLLS TO MANAGE -->
 
