@@ -30,7 +30,9 @@
 				<div class="form-group" data-ng-repeat="choice in poll.choices">
 					<input type="radio" data-ng-model="formData.voteFor" value="{{$index}}"><span>  </span>{{choice.choice}}
 				</div>
-				<button type="button" class="btn btn-lg btn-success btn-block" data-ng-click="addChoice()">Add a Choice</button>
+				<div class="form-group">
+					<input type="radio" data-ng-model="formData.voteFor" value="{{poll.choices.length}}"><span>  </span><input type="text" data-ng-model="formData.custom" placeholder="Add your own choice">
+				</div>
 				<button type="submit" class="btn btn-lg btn-primary btn-block">Vote</button>
 		</form>
 	</div>

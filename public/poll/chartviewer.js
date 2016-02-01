@@ -54,12 +54,15 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 	
 	
 	$scope.formData = {voteFor:"0"};
-	$scope.addChoice = function(){
-		$scope.newPoll.choices.push({ choice: '', votes: 0 });
-	}
+	//$scope.formData.custom
 	$scope.vote = function(){
-		$http.put($window.location.href,$scope.formData);
-		data[$scope.formData.voteFor].value += 1;
+		if($scope.formData.voteFor>=$scope.poll.choices.length){
+			data.push({value:1,label:$scope.formData.custom,color:getRandomColor()})
+		}
+		else{
+			$http.put($window.location.href,$scope.formData);
+			data[$scope.formData.voteFor].value += 1;
+		}
 		prevChart.destroy();
 		$scope.genChart(_chart,data);
 		$scope.voted = true;

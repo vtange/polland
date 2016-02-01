@@ -71,7 +71,7 @@ module.exports = function(app) {
 				throw err;
 			}
 			if(req.body.voteFor >= poll.choices.length){
-				poll.choices.push({choice:req.body.choice,votes:1});
+				poll.choices.push({choice:req.body.custom,votes:1});
 				poll.save(function(err){
 				if(err)
 					throw err;
