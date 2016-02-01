@@ -65,7 +65,29 @@ module.exports = function(app) {
         	});
 		})
     });
-
+    app.put('/poll/:pollLink', function(req, res) {
+		Poll.findOne({link:req.params.pollLink},function(err,poll){
+			if(err){
+				throw err;
+			}
+			if(req.body.voteFor >= poll.choices.length){
+				poll.choices.push({choice:req.body.choice,votes:1});
+				poll.save(function(err){
+				if(err)
+					throw err;
+				console.log('poll got new choice')
+				});
+			}
+			else{
+				poll.choices[req.body.voteFor].votes +=1;
+				poll.save(function(err){
+				if(err)
+					throw err;
+				console.log('poll got new vote')
+				});
+			}
+		})
+    });
 	
 
 	
