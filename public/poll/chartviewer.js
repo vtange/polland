@@ -3,6 +3,17 @@
   var app = angular.module('chartViewer', []);
 
 app.controller('MainCtrl', ['$scope', function($scope){
+	var data=[];
+	$scope.hasData = function(){
+		var hasVotes = false;
+		data.forEach(function(choice){
+			if(choice.votes>0){
+				hasVotes = true;
+			}	
+		})
+		return hasVotes;
+	}
+	
 	function getRandomColor() {
 		var letters = '0123456789ABCDEF'.split('');
 		var color = '#';
@@ -17,7 +28,6 @@ app.controller('MainCtrl', ['$scope', function($scope){
 		$scope.getData();
 	}
 	$scope.getData = function(){
-		var data=[];
 		$scope.poll.choices.forEach(function(choice){
 			data.push({value:choice.votes,label:choice.choice,color:getRandomColor()})
 		})

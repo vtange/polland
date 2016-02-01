@@ -8,6 +8,14 @@
 	<style>
         body        { text-align:center; padding-top:80px; color:inherit; background-color: #eee;  }
 		a			{ color:yellow }
+		.form-group {
+			background-color:white;
+			border:1px solid lightgrey;
+			border-radius: 7px;
+			font-size:1.5em;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
     </style>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script type="text/javascript" src="Chart.min.js"></script>
@@ -15,6 +23,7 @@
 </head>
 <body>
 <div class="container" data-ng-app="chartViewer" data-ng-controller="MainCtrl" ng-init="package = <%= poll %>;init(package)">
+	<% if (user == poll.asker) { %>
 	<div id="voting-page">
 		<h1 style="margin-bottom:20px;">{{poll.question}}</h1>
 		<form data-ng-submit="vote()">
@@ -25,10 +34,12 @@
 				<button type="submit" class="btn btn-lg btn-primary btn-block">Vote</button>
 		</form>
 	</div>
+	<% } %>
 	<div id="results">
-		<div class="col-sm-6 col-sm-offset-3">
+		<div class="col-sm-6 col-sm-offset-3" data-ng-show="hasData()">
 			<canvas id="chart" width="400" height="400"></canvas>
 		</div>
+		<h1 style="color:grey" data-ng-show="!(hasData())">No Data yet.</h1>
 	</div>
 </div>
 </body>

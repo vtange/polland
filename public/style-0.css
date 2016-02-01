@@ -196,11 +196,3 @@ option{
 	height:34px;
 	border-bottom: 1px solid lightgrey;
 }
-.form-group{
-	background-color:white;
-	border:1px solid lightgrey;
-	border-radius: 7px;
-	font-size:1.5em;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
