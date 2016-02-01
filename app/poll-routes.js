@@ -46,11 +46,17 @@ module.exports = function(app) {
     // you don't have to be logged in to view a poll
     // will need to find a poll by link in mongo DB , and return it as a package.
     app.get('/poll/:pollLink', function(req, res) {
-		var link = req.params.pollLink;
-        res.render('poll-view.ejs', {
-            user : req.user, // get the user out of session and pass to template, if user == author, editable.
-			link : link
-        });
+		var getPoll;
+		Poll.find({link:req.params.pollLink},function(err,poll){
+			if(err){
+				throw err;
+			}
+			getPoll = poll;
+				res.render('poll-view.ejs', {
+				user : req.user, // get the user out of session and pass to template, if user == author, editable.
+				poll : JSON.stringify(getPoll)
+        	});
+		})
     });
 
 	

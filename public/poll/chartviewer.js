@@ -1,77 +1,22 @@
-document.addEventListener("DOMContentLoaded", function() {
-//Data
-	var pieData = [
-	   {
-		  value: 25,
-		  label: 'Java',
-		  color: '#811BD6'
-	   },
-	   {
-		  value: 10,
-		  label: 'Scala',
-		  color: '#9CBABA'
-	   },
-	   {
-		  value: 30,
-		  label: 'PHP',
-		  color: '#D18177'
-	   },
-	   {
-		  value : 35,
-		  label: 'HTML',
-		  color: '#6AE128'
-	   }
-	];
-	var barData = [
-	   {
-		  value: 25,
-		  label: 'Java',
-		  color: '#811BD6'
-	   },
-	   {
-		  value: 10,
-		  label: 'Scala',
-		  color: '#9CBABA'
-	   },
-	   {
-		  value: 30,
-		  label: 'PHP',
-		  color: '#D18177'
-	   },
-	   {
-		  value : 35,
-		  label: 'HTML',
-		  color: '#6AE128'
-	   }
-	];
-	var lineData = [
-	   {
-		  value: 25,
-		  label: 'Java',
-		  color: '#811BD6'
-	   },
-	   {
-		  value: 10,
-		  label: 'Scala',
-		  color: '#9CBABA'
-	   },
-	   {
-		  value: 30,
-		  label: 'PHP',
-		  color: '#D18177'
-	   },
-	   {
-		  value : 35,
-		  label: 'HTML',
-		  color: '#6AE128'
-	   }
-	];
-	
-// Get the context of the canvas element we want to select
+(function() {
+    //start of function
+  var app = angular.module('chartViewer', []);
 
-var context = document.getElementById('chart').getContext('2d');
-var skillsChart = new Chart(context).Pie(pieData);
+app.controller('MainCtrl', ['$scope', function($scope){
+
+	var context = document.getElementById('chart').getContext('2d');
+	$scope.poll = {};
+	$scope.init = function(package){
+		$scope.poll = package[0];
+	}
 	
 	
 	
-});
+	
+	
+	
+	
+	
+	}]);//end of controller
+  //end of function
+})();
