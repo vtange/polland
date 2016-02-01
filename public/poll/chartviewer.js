@@ -23,8 +23,10 @@ app.controller('MainCtrl', ['$scope', function($scope){
 		return color;
 	}
 	$scope.poll = {};
+	$scope.voted = false;
 	$scope.init = function(package){
-		$scope.poll = package[0];
+		$scope.poll = package[0][0];
+		$scope.voted = package[1]?true:false;
 		$scope.getData();
 	}
 	$scope.getData = function(){

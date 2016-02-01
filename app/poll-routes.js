@@ -47,15 +47,21 @@ module.exports = function(app) {
     // will need to find a poll by link in mongo DB , and return it as a package.
     app.get('/poll/:pollLink', function(req, res) {
 		var getPoll;
+		var master = false;
 		Poll.find({link:req.params.pollLink},function(err,poll){
 			if(err){
 				throw err;
 			}
+			if (req.isAuthenticated()){
+				if (req.user._id.toString() == poll[0].asker.toString()){
+					master = true;
+				}
+			}
 			getPoll = poll;
 				res.render('poll-view.ejs', {
 				user : req.user, // get the user out of session and pass to template, if user == author, editable.
-				poll : getPoll,
-				package : JSON.stringify(getPoll)
+				isAuthor : master,
+				package : JSON.stringify([getPoll,master])
         	});
 		})
     });

@@ -23,8 +23,8 @@
 </head>
 <body>
 <div class="container" data-ng-app="chartViewer" data-ng-controller="MainCtrl" ng-init="package = <%= package %>;init(package)">
-	<% if (user !== poll[0].asker) { %>
-	<div id="voting-page">
+	<% if (!isAuthor) { %>
+	<div id="voting-page" data-ng-show="!voted">
 		<h1 style="margin-bottom:20px;">{{poll.question}}</h1>
 		<form data-ng-submit="vote()">
 				<div class="form-group" data-ng-repeat="choice in poll.choices">
@@ -35,7 +35,7 @@
 		</form>
 	</div>
 	<% } %>
-	<div id="results">
+	<div id="results" data-ng-show="voted">
 		<div class="col-sm-6 col-sm-offset-3" data-ng-show="hasData()">
 			<canvas id="chart" width="400" height="400"></canvas>
 		</div>
