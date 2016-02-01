@@ -23,9 +23,9 @@
 </head>
 <body>
 <div class="container" data-ng-app="chartViewer" data-ng-controller="MainCtrl" ng-init="package = <%= package %>;init(package)">
+	<h1 style="margin-bottom:20px;">{{poll.question}}</h1>
 	<% if (!isAuthor) { %>
 	<div id="voting-page" data-ng-show="!voted">
-		<h1 style="margin-bottom:20px;">{{poll.question}}</h1>
 		<form data-ng-submit="vote()">
 				<div class="form-group" data-ng-repeat="choice in poll.choices">
 					<input type="radio" data-ng-model="formData.voteFor" value="{{$index}}"><span>  </span>{{choice.choice}}

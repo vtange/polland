@@ -7,7 +7,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 	$scope.hasData = function(){
 		var hasVotes = false;
 		data.forEach(function(choice){
-			if(choice.votes>0){
+			if(choice.value>0){
 				hasVotes = true;
 			}	
 		})
