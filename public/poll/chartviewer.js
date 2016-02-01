@@ -60,9 +60,9 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 			data.push({value:1,label:$scope.formData.custom,color:getRandomColor()})
 		}
 		else{
-			$http.put($window.location.href,$scope.formData);
 			data[$scope.formData.voteFor].value += 1;
 		}
+		$http.put($window.location.href,$scope.formData);
 		prevChart.destroy();
 		$scope.genChart(_chart,data);
 		$scope.voted = true;
