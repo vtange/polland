@@ -39,7 +39,10 @@
 		<div class="col-sm-6 col-sm-offset-3" data-ng-show="hasData()">
 			<canvas id="chart" width="400" height="400"></canvas>
 		</div>
-		<h1 style="color:grey" data-ng-show="!(hasData())">No Data yet.</h1>
+		<div style="color:grey">
+			<h1 data-ng-show="!(hasData())">No Data yet.</h1>
+			<h3>Share this poll: {{link}}</h3>
+		</div>
 	</div>
 </div>
 </body>

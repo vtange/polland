@@ -2,7 +2,7 @@
     //start of function
   var app = angular.module('chartViewer', []);
 
-app.controller('MainCtrl', ['$scope', function($scope){
+app.controller('MainCtrl', ['$scope', '$window', function($scope, $window){
 	var data=[];
 	$scope.hasData = function(){
 		var hasVotes = false;
@@ -24,6 +24,7 @@ app.controller('MainCtrl', ['$scope', function($scope){
 	}
 	$scope.poll = {};
 	$scope.voted = false;
+	$scope.link = $window.location.href;
 	$scope.init = function(package){
 		$scope.poll = package[0][0];
 		$scope.voted = package[1]?true:false;
@@ -61,6 +62,7 @@ app.controller('MainCtrl', ['$scope', function($scope){
 	$scope.vote = function(){
 		console.log($scope.formData);
 		console.log("hi");
+		$scope.voted = true;
 	}
 	
 	
