@@ -54,7 +54,8 @@ module.exports = function(app) {
 			getPoll = poll;
 				res.render('poll-view.ejs', {
 				user : req.user, // get the user out of session and pass to template, if user == author, editable.
-				poll : JSON.stringify(getPoll)
+				poll : getPoll,
+				package : JSON.stringify(getPoll)
         	});
 		})
     });

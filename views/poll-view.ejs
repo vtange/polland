@@ -22,8 +22,8 @@
     <script type="text/javascript" src="chartviewer.js"></script>
 </head>
 <body>
-<div class="container" data-ng-app="chartViewer" data-ng-controller="MainCtrl" ng-init="package = <%= poll %>;init(package)">
-	<% if (user == poll.asker) { %>
+<div class="container" data-ng-app="chartViewer" data-ng-controller="MainCtrl" ng-init="package = <%= package %>;init(package)">
+	<% if (user !== poll[0].asker) { %>
 	<div id="voting-page">
 		<h1 style="margin-bottom:20px;">{{poll.question}}</h1>
 		<form data-ng-submit="vote()">
