@@ -30,26 +30,24 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 		$scope.voted = package[1]?true:false;
 		$scope.getData();
 	}
+	var context = document.getElementById('chart').getContext('2d');
+	var _chart = new Chart(context);
+	var prevChart;
 	$scope.getData = function(){
 		$scope.poll.choices.forEach(function(choice){
 			data.push({value:choice.votes,label:choice.choice,color:getRandomColor()})
 		})
-		$scope.chartView(data);
+		$scope.genChart(_chart,data);
 	};
-	var context = document.getElementById('chart').getContext('2d');
-	$scope.chartView = function(data){
-		var prevChart = new Chart(context).Pie(data); ;
+	$scope.genChart = function(chart, data){
 		if($scope.poll.chartType==="Pie"){
-			prevChart.destroy();
-			prevChart = new Chart(context).Pie(data);
+			prevChart = chart.Pie(data);
 		}
 		else if($scope.poll.chartType==="Bar"){
-			prevChart.destroy();
-			prevChart = new Chart(context).Bar(data);
+			prevChart = chart.Bar(data);
 		}
 		else if($scope.poll.chartType==="Line"){
-			prevChart.destroy();
-			prevChart = new Chart(context).Line(data);
+			prevChart = chart.Line(data);
 		}
 	}
 	
@@ -60,8 +58,10 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 		$scope.newPoll.choices.push({ choice: '', votes: 0 });
 	}
 	$scope.vote = function(){
-		console.log($scope.formData);
 		$http.put($window.location.href,$scope.formData);
+		data[$scope.formData.voteFor].value += 1;
+		prevChart.destroy();
+		$scope.genChart(_chart,data);
 		$scope.voted = true;
 	}
 	
