@@ -21,7 +21,6 @@ app.controller('MainCtrl', ['$scope', function($scope){
 		$scope.poll.choices.forEach(function(choice){
 			data.push({value:choice.votes,label:choice.choice,color:getRandomColor()})
 		})
-		console.log(data);
 		$scope.chartView(data);
 	};
 	var context = document.getElementById('chart').getContext('2d');
@@ -42,6 +41,15 @@ app.controller('MainCtrl', ['$scope', function($scope){
 	}
 	
 	
+	
+	$scope.formData = {voteFor:"0"};
+	$scope.addChoice = function(){
+		$scope.newPoll.choices.push({ choice: '', votes: 0 });
+	}
+	$scope.vote = function(){
+		console.log($scope.formData);
+		console.log("hi");
+	}
 	
 	
 	

@@ -4,10 +4,9 @@
 <head>
     <title>Polland View Poll</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
 	<link rel="stylesheet" type="text/css" href="style-0.css">
 	<style>
-        body        { text-align:center; padding-top:80px; color:white; background-color: #eee;  }
+        body        { text-align:center; padding-top:80px; color:inherit; background-color: #eee;  }
 		a			{ color:yellow }
     </style>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
@@ -16,11 +15,21 @@
 </head>
 <body>
 <div class="container" data-ng-app="chartViewer" data-ng-controller="MainCtrl" ng-init="package = <%= poll %>;init(package)">
-
-<div class="col-sm-6 col-sm-offset-3">
-	<canvas id="chart" width="400" height="400"></canvas>
-</div>
-
+	<div id="voting-page">
+		<h1 style="margin-bottom:20px;">{{poll.question}}</h1>
+		<form data-ng-submit="vote()">
+				<div class="form-group" data-ng-repeat="choice in poll.choices">
+					<input type="radio" data-ng-model="formData.voteFor" value="{{$index}}"><span>  </span>{{choice.choice}}
+				</div>
+				<button type="button" class="btn btn-lg btn-success btn-block" data-ng-click="addChoice()">Add a Choice</button>
+				<button type="submit" class="btn btn-lg btn-primary btn-block">Vote</button>
+		</form>
+	</div>
+	<div id="results">
+		<div class="col-sm-6 col-sm-offset-3">
+			<canvas id="chart" width="400" height="400"></canvas>
+		</div>
+	</div>
 </div>
 </body>
 </html>
