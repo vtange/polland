@@ -5,6 +5,8 @@
     <title>Polland</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" type="text/css" href="style-0.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js'></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </head>
@@ -13,7 +15,7 @@
 	  
       <div class="polls-viewport">
 		  	<!-- LOAD OTHERS' POLLS TO CHECKOUT AND VOTE ON -->
-			  <div class="flex-container poll-list">
+			  <div id="otherPolls" class="flex-container poll-list">
 			  	<a class="blueless-link" data-ng-repeat="poll in otherPolls" data-ng-href="/poll/{{poll.link}}"><div class="poll-thumb">
 					<span><h3>{{poll.question}}</h3></span>
 				</div></a>
@@ -38,7 +40,7 @@
 			  <h1><a class="blueless-link" href="/profile"><%= user.local.username  %></a>'s Polls:</h1>
 
 			  <!-- LOAD USER'S POLLS TO MANAGE -->
-			  <div class="flex-container poll-list">
+			  <div id="myPolls" class="flex-container poll-list">
 				<a class="blueless-link" href="/newpoll"><div class="poll-thumb add-poll-btn"><span><h3>Create a New Poll</h3></span><p class="big-plus vert-centered">+</p></div></a>
 			  	<a class="blueless-link" data-ng-repeat="poll in myPolls" data-ng-href="/poll/{{poll.link}}"><div class="poll-thumb">
 					<span><h3>{{poll.question}}</h3></span>

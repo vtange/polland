@@ -141,7 +141,13 @@ ul{
 
 
 /* poll sideways list */
-
+#myPolls{
+ transition: all 0.2s ease-in-out; 
+}
+#otherPolls{
+	position: absolute;
+ transition: all 0.2s ease-in-out; 
+}
 .flex-container {
   -webkit-flex-direction: row; /* Safari */
   flex-direction:         row;
