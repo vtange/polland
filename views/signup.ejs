@@ -27,15 +27,15 @@
     <form class="login-area centered" action="/signup" method="post">
 		<div class="form-group">
             <label>Username</label>
-            <input type="text" class="form-control well" name="username">
+            <input type="text" class="form-control well" name="username" ng-pattern="/[\w]{6,}/" required>
         </div>
         <div class="form-group">
             <label>Email</label>
-            <input type="text" class="form-control well" name="email">
+            <input type="text" class="form-control well" name="email" ng-pattern="/[^\s@]+@[^\s@]+\.[^\s@]{2,}/" required>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input type="password" class="form-control well" name="password">
+            <input type="password" class="form-control well" name="password" ng-pattern="/[\w]{6,}/" required>
         </div>
 
         <button type="submit" class="btn btn-lg">Signup</button>
