@@ -16,10 +16,10 @@
       <div class="polls-viewport">
 		  	<!-- LOAD OTHERS' POLLS TO CHECKOUT AND VOTE ON -->
 			  <div id="otherPolls" class="flex-container poll-list">
-			  	<a class="blueless-link" data-ng-repeat="poll in otherPolls" data-ng-href="/poll/{{poll.link}}"><div class="poll-thumb">
+			  	<div data-ng-repeat="poll in otherPolls" class="poll-thumb"><a class="blueless-link" data-ng-href="/poll/{{poll.link}}">
 					<span><h3>{{poll.question}}</h3></span>
-					<span>{{getTotalVotes(poll)}}</span>
-				</div></a>
+					<span>{{getTotalVotes(poll)}} Votes</span>
+				</a></div>
 			  </div>
 		  	<!-- LOAD OTHERS' POLLS TO CHECKOUT AND VOTE ON -->
 		  
@@ -42,10 +42,11 @@
 
 			  <!-- LOAD USER'S POLLS TO MANAGE -->
 			  <div id="myPolls" class="flex-container poll-list">
-				<a class="blueless-link" href="/newpoll"><div class="poll-thumb add-poll-btn"><span><h3>Create a New Poll</h3></span><p class="big-plus vert-centered">+</p></div></a>
-			  	<a class="blueless-link" data-ng-repeat="poll in myPolls" data-ng-href="/poll/{{poll.link}}"><div class="poll-thumb">
+				<div class="poll-thumb add-poll-btn"><a class="blueless-link" href="/newpoll"><span><h3>Create a New Poll</h3></span><p class="big-plus vert-centered">+</p></a></div>
+			  	<div data-ng-repeat="poll in myPolls" class="poll-thumb"><a class="blueless-link" data-ng-href="/poll/{{poll.link}}">
 					<span><h3>{{poll.question}}</h3></span>
-				</div></a>
+					<span>{{getTotalVotes(poll)}} Votes</span>
+				</a></div>
 			  </div>
 			  <!-- LOAD USER'S POLLS TO MANAGE -->
 

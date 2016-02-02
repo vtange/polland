@@ -153,7 +153,14 @@ ul{
   flex-direction:         row;
   display: flex;
 }
-.poll-list{
+.polls-viewport .poll-thumb{
+	background-color: rgba(255,255,255,0.7)
+}
+.user-ctrl-bar .poll-thumb{
+	background-color: rgba(255,200,200,0.4)
+}
+.user-ctrl-bar .poll-thumb:first-child{
+	background-color: rgba(0,156,0,0.7);
 }
 .poll-thumb{
 	position:relative;
@@ -161,7 +168,6 @@ ul{
 	padding:20px;
 	width:27vh;
 	height:27vh;
-	background-color: rgba(255,255,255,0.7);
 	box-shadow: 3px 3px 10px grey;
 	border:3px solid turquoise;
 	border-radius:10px;
@@ -173,7 +179,6 @@ ul{
 }
 .add-poll-btn{
 	text-align:center;
-	background-color: rgba(0,156,0,0.7);
 }
 .big-plus{
 	position: absolute;
