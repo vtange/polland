@@ -18,6 +18,7 @@
 			  <div id="otherPolls" class="flex-container poll-list">
 			  	<a class="blueless-link" data-ng-repeat="poll in otherPolls" data-ng-href="/poll/{{poll.link}}"><div class="poll-thumb">
 					<span><h3>{{poll.question}}</h3></span>
+					<span>{{getTotalVotes(poll)}}</span>
 				</div></a>
 			  </div>
 		  	<!-- LOAD OTHERS' POLLS TO CHECKOUT AND VOTE ON -->

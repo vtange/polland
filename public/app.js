@@ -12,6 +12,20 @@ app.controller('MainCtrl', ['$scope', function($scope){
 		$scope.otherPolls = package[1][0];
 		$scope.myPolls = package[2][0];
 	}
+	$scope.getTotalVotes = function(poll){
+		return poll.choices.reduce(function(total,next){
+			if(total.constructor === Number){
+				return total + next.votes;
+			}
+			else{
+				return total.votes + next.votes;
+			}
+				
+		})
+	}
+	
+	
+	
 }]);//end of controller
 	
 	
