@@ -9,6 +9,8 @@
 	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js'></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="moment.min.js"></script>
+    <script type="text/javascript" src="livestamp.min.js"></script>
 </head>
 <body data-ng-app="VoteApp">
   <div class="content" data-ng-controller="MainCtrl" ng-init="package = <%= packageForAngular %>;init(package)">
@@ -17,9 +19,10 @@
 		  <h1 id="recentPolls">Recent Polls:</h1>
 		  	<!-- LOAD OTHERS' POLLS TO CHECKOUT AND VOTE ON -->
 			  <div id="otherPolls" class="flex-container poll-list">
-			  	<div data-ng-repeat="poll in otherPolls" class="poll-thumb"><a class="blueless-link" data-ng-href="/poll/{{poll.link}}">
+			  	<div data-ng-repeat="poll in otherPolls" class="poll-thumb" data-ng-style="pollType(poll)"><a class="blueless-link" data-ng-href="/poll/{{poll.link}}">
+					<div style="position:absolute;top:10px;"><span>Posted </span><span data-livestamp="{{poll.postDate}}"></span></div>
 					<span><h3>{{poll.question}}</h3></span>
-					<span>{{getTotalVotes(poll)}} Votes</span>
+					<span style="position:absolute;bottom:0;"><h2>{{getTotalVotes(poll)}} Votes</h2></span>
 				</a></div>
 			  </div>
 		  	<!-- LOAD OTHERS' POLLS TO CHECKOUT AND VOTE ON -->

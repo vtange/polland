@@ -182,6 +182,10 @@ ul{
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+ */
 	overflow:hidden;
+	
+	background-size: 50%;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 .add-poll-btn{
 	text-align:center;

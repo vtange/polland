@@ -12,6 +12,19 @@ app.controller('MainCtrl', ['$scope', function($scope){
 		$scope.otherPolls = package[1][0];
 		$scope.myPolls = package[2][0];
 	}
+	$scope.pollType = function(poll){
+		if(poll.chartType=="Pie"){
+			return {"background-image":"url('img/pie.png')"}
+		}
+		if(poll.chartType=="Bar"){
+			return {"background-image":"url('img/bar.png')"}
+		}		
+		if(poll.chartType=="Line"){
+			return {"background-image":"url('img/line.png')"}
+		}		
+	}
+	
+	
 	$scope.getTotalVotes = function(poll){
 		return poll.choices.reduce(function(total,next){
 			if(total.constructor === Number){
