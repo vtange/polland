@@ -2,14 +2,7 @@
     //start of function
   var app = angular.module('VoteApp', []);
 
-app.factory('UserService', function(){
-	var obj = {};
-	return obj;
-});//end of service
-
-app.controller('MainCtrl', ['$scope', 'UserService', function($scope, UserService){
-    $scope.UserService = UserService; // load service
-	
+app.controller('MainCtrl', ['$scope', function($scope){
     //$scope.otherPolls = [poll1, poll2]
     $scope.myPolls = [];
 	
