@@ -154,8 +154,6 @@ ul{
   display: flex;
 }
 .poll-list{
-	border:2px solid blue;
-	border-radius:10px;
 }
 .poll-thumb{
 	position:relative;
