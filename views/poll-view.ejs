@@ -46,6 +46,9 @@
 			<h3>Share this poll: {{link}}</h3>
 		</div>
 	</div>
+	<% if (isAuthor) { %>
+		<button type="button" class="btn btn-lg btn-danger btn-block" data-ng-click="deletePoll()">Delete this Poll</button>
+	<% } %>
 </div>
 </body>
 </html>

@@ -88,7 +88,16 @@ module.exports = function(app) {
 			}
 		})
     });
-	
+    app.delete('/poll/:pollLink', function(req, res) {
+		Poll.remove({link:req.params.pollLink},function(err){
+			if(err){
+				throw err;
+			}
+			else{
+				res.send(200);
+			}
+		})
+    });
 
 	
 };

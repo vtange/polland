@@ -68,7 +68,17 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 		$scope.voted = true;
 	}
 	
-	
+	$scope.deletePoll = function(){
+		$http.delete($window.location.href).success(function() {
+			console.log('success is called');
+			$window.location.href = '/';
+		    
+		  }).error(function(error) {
+			console.log('error');
+		  }).then(function() {
+			console.log('then is called');
+		  });;
+	}
 	
 	
 	
