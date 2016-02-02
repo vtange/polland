@@ -14,6 +14,7 @@
   <div class="content" data-ng-controller="MainCtrl" ng-init="package = <%= packageForAngular %>;init(package)">
 	  
       <div class="polls-viewport">
+		  <h1 id="recentPolls">Recent Polls:</h1>
 		  	<!-- LOAD OTHERS' POLLS TO CHECKOUT AND VOTE ON -->
 			  <div id="otherPolls" class="flex-container poll-list">
 			  	<div data-ng-repeat="poll in otherPolls" class="poll-thumb"><a class="blueless-link" data-ng-href="/poll/{{poll.link}}">
@@ -26,9 +27,9 @@
 		  
 		  <div id="title">
 			  <% if (user) { %>
-	        <h1>Poll-land</h1>
+	        <h1 style="font-size:4em;">Welcome back to Poll-land.</h1>
 			  <% } else { %>
-			<h1>Welcome to Poll-land.</h1>
+			<h1 style="font-size:4em;">Welcome to Poll-land.</h1>
 			  <% } %>
 		  </div>
       </div>
@@ -38,7 +39,7 @@
 		      <% if (user) { %>
 		  
 		  <div class="user-ctrl-panel">
-			  <h1><a class="blueless-link" href="/profile"><%= user.local.username  %></a>'s Polls:</h1>
+			  <h1><a style="text-decoration:underline" class="blueless-link" href="/profile"><%= user.local.username  %></a>'s Polls:</h1>
 
 			  <!-- LOAD USER'S POLLS TO MANAGE -->
 			  <div id="myPolls" class="flex-container poll-list">
