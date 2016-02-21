@@ -88,6 +88,8 @@ ul{
 	position: absolute;
 	left: 40px;
 	top: 40px;
+	
+	text-shadow: 3px 3px 20px #bbb;
 }
 /* 'POLL-LAND' */
 .polls-viewport #title{
@@ -97,7 +99,7 @@ ul{
   font-style: italic;
   transition: all 0.5s ease-in-out;
 	
-  text-shadow: 3px 3px 10px grey;
+  text-shadow: 3px 3px 20px #bbb;
 }
 /* the red part */
 .user-ctrl-bar{
