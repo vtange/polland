@@ -22,6 +22,28 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 		}
 		return color;
 	}
+
+	function dataForBarsLines(data) {
+		var modifiedData = {
+			labels:[],
+			datasets:[]
+		};
+		data.forEach(function(choice,index){
+			modifiedData.labels.push(choice.label);
+			modifiedData.datasets.push({
+					fillColor: choice.color,
+					strokeColor: choice.color,
+					highlightFill: choice.color,
+					highlightStroke: choice.color,
+					data: data.map(function(item){
+						return 0;
+					})
+			});
+			modifiedData.datasets[index].data[index] = choice.value;
+		});
+		return modifiedData;
+	}
+
 	$scope.poll = {};
 	$scope.voted = false;
 	$scope.link = $window.location.href;
@@ -44,10 +66,10 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 			prevChart = chart.Pie(data);
 		}
 		else if($scope.poll.chartType==="Bar"){
-			prevChart = chart.Bar(data);
+			prevChart = chart.Bar(dataForBarsLines(data));
 		}
 		else if($scope.poll.chartType==="Line"){
-			prevChart = chart.Line(data);
+			prevChart = chart.Line(dataForBarsLines(data));
 		}
 	}
 	
