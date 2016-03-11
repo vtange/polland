@@ -49,7 +49,6 @@ app.controller('MainCtrl', ['$scope', function($scope){
 		   if(myPollsPosition + delta*100<=0 && myPollsPosition + delta*100>= $(".content").outerWidth() - $("#myPolls").outerWidth()-100){
 			   myPollsPosition += (delta*100);
 			   $("#myPolls").css("transform","translateX("+myPollsPosition+"px)")
-			   console.log(myPollsPosition);
 			  event.preventDefault();
 		   }
 	   });
@@ -60,6 +59,43 @@ app.controller('MainCtrl', ['$scope', function($scope){
 			  event.preventDefault();
 		   }
 	   });
+		
+	   $(".user-ctrl-bar").swipe({
+		  swipeLeft:function(event, direction, distance, duration, fingerCount) {
+			  if($("#myPolls").outerWidth() >  $(".content").outerWidth()){
+				  var delta = distance * duration / 100;
+				   myPollsPosition = Math.max(otherPollsPosition - delta, -($("#myPolls").outerWidth()));
+				   $("#myPolls").css("transform","translateX("+myPollsPosition+"px)")
+				  event.preventDefault();
+			  }
+		  },
+		  swipeRight:function(event, direction, distance, duration, fingerCount) {
+			  var delta = distance * duration / 100;
+			   myPollsPosition = Math.min(otherPollsPosition + delta, 0);
+			   $("#myPolls").css("transform","translateX("+myPollsPosition+"px)")
+			  event.preventDefault();
+		  }
+		});
+	   $(".polls-viewport").swipe({
+		  swipeLeft:function(event, direction, distance, duration, fingerCount) {
+			  if($("#otherPolls").outerWidth() >  $(".content").outerWidth()){
+				  var delta = distance * duration / 100;
+				   otherPollsPosition = Math.max(otherPollsPosition - delta, -($("#otherPolls").outerWidth()));
+				   $("#otherPolls").css("transform","translateX("+otherPollsPosition+"px)")
+				  event.preventDefault();
+			  }
+		  },
+		  swipeRight:function(event, direction, distance, duration, fingerCount) {
+			  var delta = distance * duration / 100;
+			   otherPollsPosition = Math.min(otherPollsPosition + delta, 0);
+			   $("#otherPolls").css("transform","translateX("+otherPollsPosition+"px)")
+			  event.preventDefault();
+		  }
+		});
+
+		
+		
+		
 	});
 	
 	
