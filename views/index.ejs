@@ -19,11 +19,11 @@
 		  <h1 id="recentPolls">Recent Polls:</h1>
 		  	<!-- LOAD OTHERS' POLLS TO CHECKOUT AND VOTE ON -->
 			  <div id="otherPolls" class="flex-container poll-list">
-			  	<div data-ng-repeat="poll in otherPolls" class="poll-thumb" data-ng-style="pollType(poll)"><a class="blueless-link" data-ng-href="/poll/{{poll.link}}">
+			  	<a data-ng-repeat="poll in otherPolls" class="blueless-link" data-ng-href="/poll/{{poll.link}}"><div class="poll-thumb" data-ng-style="pollType(poll)">
 					<div style="position:absolute;top:10px;"><span>Posted </span><span data-livestamp="{{poll.postDate}}"></span></div>
 					<span><h3>{{poll.question}}</h3></span>
 					<span style="position:absolute;bottom:0;"><h2>{{getTotalVotes(poll)}} Votes</h2></span>
-				</a></div>
+				</div></a>
 			  </div>
 		  	<!-- LOAD OTHERS' POLLS TO CHECKOUT AND VOTE ON -->
 		  
