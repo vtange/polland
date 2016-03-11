@@ -3,7 +3,11 @@
   var app = angular.module('chartViewer', []);
 
 app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $window, $http){
+	
+	// data from poll choices: the choice name, how many votes, color. From mongoDB
 	var data=[];
+	
+	// for poll owners viewing their own poll. Checks if poll even has a single vote.
 	$scope.hasData = function(){
 		var hasVotes = false;
 		data.forEach(function(choice){
@@ -14,6 +18,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 		return hasVotes;
 	}
 	
+	// generates random color for poll display
 	function getRandomColor() {
 		var letters = '0123456789ABCDEF'.split('');
 		var color = '#';
@@ -23,6 +28,7 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 		return color;
 	}
 
+	// converts data to bar/line friendly format
 	function dataForBarsLines(data) {
 		var modifiedData = {
 			labels:[],
@@ -44,14 +50,23 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 		return modifiedData;
 	}
 
+	// the poll. what question, its choices.
 	$scope.poll = {};
+	
+	// controls whether to show poll chart or choices
 	$scope.voted = false;
+	
+	// for sharing poll
 	$scope.link = $window.location.href;
+	
+	// init by getting poll information, initialize voted based on if logged in user is the poll owner or not
 	$scope.init = function(package){
 		$scope.poll = package[0][0];
 		$scope.voted = package[1]?true:false;
 		$scope.getData();
 	}
+	
+	// init poll with data
 	var context = document.getElementById('chart').getContext('2d');
 	var _chart = new Chart(context);
 	var prevChart;
@@ -72,9 +87,8 @@ app.controller('MainCtrl', ['$scope', '$window', '$http', function($scope, $wind
 			prevChart = chart.Line(dataForBarsLines(data));
 		}
 	}
-	
-	
-	
+
+	// input form for voting. use an object for ng-models
 	$scope.formData = {voteFor:"0"};
 	//$scope.formData.custom
 	$scope.vote = function(){
