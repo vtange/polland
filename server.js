@@ -42,11 +42,15 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
-require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-require('./app/poll-routes.js')(app); // load our routes for poll interaction
-require('./app/socialMedia.js')(app, passport); // load social media linking
-require('./app/passForget.js')(app); // load password forgot functionality
+
+require('./app/routes.js')(app); // load our routes and pass in our app and fully configured passport
+
+	require('./app/acct-manage/loginLogout.js')(app, passport); // load login logout routes
+	require('./app/acct-manage/socialMedia.js')(app, passport); // load social media linking
+	require('./app/acct-manage/passForget.js')(app); // load password forgot functionality
+
 console.log("SERVER.JS")
+
 // launch ======================================================================
 app.listen(port);
 console.log('The magic happens on port ' + port);

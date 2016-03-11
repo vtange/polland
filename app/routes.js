@@ -2,9 +2,10 @@ console.log("	APP/ROUTES.JS")
 
 // load up the poll model
 var Poll       = require('../app/models/poll');
+var shortid  = require('shortid');
 
 // app/routes.js
-module.exports = function(app, passport) {
+module.exports = function(app) {
 
     // =====================================
     // HOME PAGE (with login links) ========
@@ -36,67 +37,100 @@ module.exports = function(app, passport) {
     });
 
     // =====================================
-    // LOGIN ===============================
+    // CREATE/EDIT POLL =====================//DROPPED/ USE FOR OPTIONS
     // =====================================
-    // show the login form
-    app.get('/login', loginRedundancy, function(req, res) {
-
-        // render the page and pass in any flash data if it exists
-        res.render('login.ejs', { message: req.flash('loginMessage') }); 
-    });
-
-    // process the login form
-    app.post('/login', loginRedundancy, passport.authenticate('local-login', {
-        successRedirect : '/', // redirect to home page with logged in status
-        failureRedirect : '/login', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
-    }));
-
-    // =====================================
-    // SIGNUP ==============================
-    // =====================================
-    // show the signup form
-    app.get('/signup', loginRedundancy, function(req, res) {
-
-        // render the page and pass in any flash data if it exists
-        res.render('signup.ejs', { message: req.flash('signupMessage') });
-    });
-
-    // process the signup form
-    app.post('/signup', loginRedundancy, passport.authenticate('local-signup', {
-        successRedirect : '/', // redirect to home page with logged in status
-        failureRedirect : '/signup', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
-    }));
-
-
-    // =====================================
-    // PROFILE SECTION =====================//DROPPED/ USE FOR OPTIONS
-    // =====================================
-    // we will want this protected so you have to be logged in to visit
+    // you have to be logged in to make or edit a poll
     // we will use route middleware to verify this (the isLoggedIn function)
-    app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile.ejs', {
-            user : req.user // get the user out of session and pass to template
-        });
+    app.get('/newpoll', isLoggedIn, function(req, res) {
+        res.render('poll-manage/poll-create.ejs');
+    });
+	
+	// get user from session
+    app.post('/newpoll', function(req, res) {
+        var author = req.user;
+		var incoming = req.body;
+		var newPoll            = new Poll();
+		newPoll.question = incoming.question;
+		newPoll.asker = author;
+		newPoll.postDate = Date.now();
+		newPoll.chartType = incoming.chartType;
+		newPoll.link = shortid.generate();
+		newPoll.choices = incoming.choices;
+		newPoll.save(function(err) {
+			if (err)
+				throw err;
+			author.polls.push(newPoll);
+			author.save(function(err){
+				if(err)
+					throw err;
+				console.log('author updated')
+			})
+			console.log('saved a new poll')
+		});
+		res.redirect('/');
+    });	
+	// =====================================
+    // VIEW POLL =====================//DROPPED/ USE FOR OPTIONS
+    // =====================================
+    // you don't have to be logged in to view a poll
+    // will need to find a poll by link in mongo DB , and return it as a package.
+    app.get('/poll/:pollLink', function(req, res) {
+		var getPoll;
+		var master = false;
+		Poll.find({link:req.params.pollLink},function(err,poll){
+			if(err){
+				throw err;
+			}
+			if (req.isAuthenticated()){
+				if (req.user._id.toString() == poll[0].asker.toString()){
+					master = true;
+				}
+			}
+			getPoll = poll;
+				res.render('poll-manage/poll-view.ejs', {
+				user : req.user, // get the user out of session and pass to template, if user == author, editable.
+				isAuthor : master,
+				package : JSON.stringify([getPoll,master])
+        	});
+		})
+    });
+    app.put('/poll/:pollLink', function(req, res) {
+		Poll.findOne({link:req.params.pollLink},function(err,poll){
+			if(err){
+				throw err;
+			}
+			if(req.body.voteFor >= poll.choices.length){
+				poll.choices.push({choice:req.body.custom,votes:1});
+				poll.save(function(err){
+				if(err)
+					throw err;
+				console.log('poll got new choice')
+				});
+			}
+			else{
+				poll.choices[req.body.voteFor].votes +=1;
+				poll.save(function(err){
+				if(err)
+					throw err;
+				console.log('poll got new vote')
+				});
+			}
+		})
+    });
+    app.delete('/poll/:pollLink', function(req, res) {
+		Poll.remove({link:req.params.pollLink},function(err){
+			if(err){
+				throw err;
+			}
+			else{
+				res.send(200);
+			}
+		})
     });
 
-    // =====================================
-    // LOGOUT ==============================
-    // =====================================
-    app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });
-
+	
 };
-// prevent logged in folks from signing up/logging in again
-function loginRedundancy(req, res, next) {
-    if (req.isAuthenticated())
-       res.redirect('/');
-	else
-		return next();
-}
+
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
 

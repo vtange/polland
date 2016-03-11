@@ -50,7 +50,7 @@ module.exports = function(app, passport) {
 //use passport.authorize to connect social accounts with current user
     // locally --------------------------------
         app.get('/connect/local', function(req, res) {
-            res.render('connect-local.ejs', { message: req.flash('loginMessage') });
+            res.render('acct-manage/connect-local.ejs', { message: req.flash('loginMessage') });
         });
         app.post('/connect/local', passport.authenticate('local-signup', {
             successRedirect : '/profile', // redirect to the secure profile section

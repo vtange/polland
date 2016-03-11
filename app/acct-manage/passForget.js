@@ -1,6 +1,6 @@
 console.log("	APP/PASSFORGET.JS")
 
-var User            = require('../app/models/user');
+var User            = require('../models/user');
 var flash    = require('connect-flash');
 var asyncc = require('async');
 var crypto = require('crypto');
@@ -17,7 +17,7 @@ module.exports = function(app) {
     app.get('/forgot', function(req, res) {
 
         // render the page and pass in any flash data if it exists
-        res.render('forgot.ejs', { message: req.flash('info') }); 
+        res.render('acct-manage/forgot.ejs', { message: req.flash('info') }); 
     });
 	
     // =====================================
@@ -79,7 +79,7 @@ module.exports = function(app) {
 		  req.flash('error', 'Password reset token is invalid or has expired.');
 		  return res.redirect('/forgot');
 		}
-		res.render('reset.ejs', {
+		res.render('acct-manage/reset.ejs', {
 		  token: req.params.token,
 		  message: req.flash('info'),
 		  user: req.user
