@@ -88,12 +88,19 @@ module.exports = function(app) {
 			}
 			getPoll = poll;
 				res.render('poll-manage/poll-view.ejs', {
-				user : req.user, // get the user out of session and pass to template, if user == author, editable.
+				user : req.user, // get the user out of session and pass to template, if user == author, not votable.
 				isAuthor : master,
 				package : JSON.stringify([getPoll,master])
         	});
 		})
     });
+	
+	// used for voting. 
+	// find poll from req.params (the url)
+	/// check if vote is for an existing choice (index less than length of choice list)
+	/// if not, make a new choice and give it one vote
+	// if the vote IS for an existing choice, increment result poll's choice[index] by one
+	// save
     app.put('/poll/:pollLink', function(req, res) {
 		Poll.findOne({link:req.params.pollLink},function(err,poll){
 			if(err){
@@ -117,6 +124,8 @@ module.exports = function(app) {
 			}
 		})
     });
+	
+	// deletes a poll by targeting through its shortid
     app.delete('/poll/:pollLink', function(req, res) {
 		Poll.remove({link:req.params.pollLink},function(err){
 			if(err){
