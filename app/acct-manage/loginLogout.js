@@ -1,4 +1,4 @@
-console.log("	APP/ROUTES.JS")
+console.log("	APP/ROUTES.JS");
 
 // app/loginLogout.js
 module.exports = function(app, passport) {
@@ -64,7 +64,7 @@ function loginRedundancy(req, res, next) {
        res.redirect('/');
 	else
 		return next();
-}
+};
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
 
@@ -74,4 +74,4 @@ function isLoggedIn(req, res, next) {
 
     // if they aren't redirect them to the home page
     res.redirect('/');
-}
+};

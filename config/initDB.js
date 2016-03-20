@@ -21,8 +21,8 @@ module.exports = function(){
 					});
 				}
 				callback(null,mockUser);
-			})
-	}
+			});
+	};
 	function genMockPolls(user, callback){
 				Poll.findOne(function(err, poll){
 
@@ -71,7 +71,7 @@ module.exports = function(){
 							user.save(function(err) {
 								if (err)
 									throw err;
-								console.log('new poll added to user')
+								console.log('new poll added to user');
 							});
 						});
 
@@ -80,7 +80,7 @@ module.exports = function(){
 				  }
 				  callback(null,"done");
 			  });
-	}
+	};
 	asyncc.waterfall([minimumUser,genMockPolls], function(err,result){
 		if(err){
 			throw err;
@@ -88,6 +88,6 @@ module.exports = function(){
 		else{
 			return result;
 		}
-	})
+	});
 
 }

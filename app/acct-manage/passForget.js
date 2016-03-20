@@ -1,4 +1,4 @@
-console.log("	APP/PASSFORGET.JS")
+console.log("	APP/PASSFORGET.JS");
 
 var User            = require('../models/user');
 var flash    = require('connect-flash');

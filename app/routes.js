@@ -1,4 +1,4 @@
-console.log("	APP/ROUTES.JS")
+console.log("	APP/ROUTES.JS");
 
 // load up the poll model
 var Poll       = require('../app/models/poll');
@@ -33,7 +33,7 @@ module.exports = function(app) {
 				packageForAngular : JSON.stringify([req.user,otherPolls,myPolls])
 			}); // load the index.ejs file
 			
-		})
+		});
     });
 
     // =====================================
@@ -92,7 +92,7 @@ module.exports = function(app) {
 				isAuthor : master,
 				package : JSON.stringify([getPoll,master])
         	});
-		})
+		});
     });
 	
 	// used for voting. 
@@ -122,7 +122,7 @@ module.exports = function(app) {
 				console.log('poll got new vote')
 				});
 			}
-		})
+		});
     });
 	
 	// deletes a poll by targeting through its shortid
@@ -134,7 +134,7 @@ module.exports = function(app) {
 			else{
 				res.send(200);
 			}
-		})
+		});
     });
 
 	
@@ -149,4 +149,4 @@ function isLoggedIn(req, res, next) {
 
     // if they aren't redirect them to the home page
     res.redirect('/');
-}
+};
