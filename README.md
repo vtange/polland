@@ -5,7 +5,7 @@
 Express, EJS, MongoDB, AngularJS, Jquery, ChartJS, TimeAgo(livestamp + moment), ```shortid``` module, ```async``` module
 
 ## Niceties
-Mousewheel + Swipe Sidescrolling (Jquery), Initialize DB always with mock user. 
+Mousewheel + Swipe Sidescrolling (Jquery), Initialize DB always with mock user ![with async operations] (https://github.com/vtange/polland/blob/master/config/initDB.js). 
 
 ### Details
 #### Routes
