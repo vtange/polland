@@ -12,7 +12,7 @@ Mousewheel + Swipe Sidescrolling (Jquery), Initialize DB always with mock user !
 | GET        | POST           | PUT  | DELETE  |
 | ---------- |:--------------:| ----:| -------:|
 | Home       |                |      |         |
-| Polls(Create|View)      |  Polls(Create)      |    Polls(Vote) |  Polls(Delete) |
+| Polls(Create,View)      |  Polls(Create)      |    Polls(Vote) |  Polls(Delete) |
 
 #### CSS
  - Radial Gradient for Red half of UI.
