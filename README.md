@@ -1,8 +1,25 @@
+![alt tag](http://res.cloudinary.com/dmj8qtant/image/upload/c_limit,w_600/v1456084188/qxlepewnyqaopzt0osgl.png)
 # polland
 
-# Takeaways
+## Tech
+Express, EJS, MongoDB, AngularJS, Jquery, ChartJS, TimeAgo(livestamp + moment), ```shortid``` module, ```async``` module
 
- - CSS/JS -> Sidescrolling
+## Niceties
+Mousewheel + Swipe Sidescrolling (Jquery), Initialize DB always with mock user. 
+
+### Details
+#### Routes
+| GET        | POST           | PUT  | DELETE  |
+| ---------- |:--------------:| ----:| -------:|
+| Home       |                |      |         |
+| Polls(Create|View)      |  Polls(Create)      |    Polls(Vote) |  Polls(Delete) |
+
+#### CSS
+ - Radial Gradient for Red half of UI.
+
+#### JS
+ - PlainJS vers. $(document).ready  ```document.addEventListener("DOMContentLoaded", function() {```
+ - Sidescrolling
 ```
 // we're basically moving the div left and right with stops before everything moves too far left or right
 	$(function() {
@@ -25,12 +42,7 @@
 	   });
 	});
 ```
- 
-
-
-
- - Using ng-init to send JS data from server to client
-
+ - Using ng-init to send data from server JS (Express) to client JS (EJS-Angular)
 ```
 // .ejs file within HTML
 data-ng-init="package = <%= packagedUser %>;autologUser(package)"
@@ -41,19 +53,44 @@ data-ng-init="package = <%= packagedUser %>;autologUser(package)"
 ```
 
  - Gotcha req.user vs author in relationship must be both toString() to compare. Because they are objects and must be deep compared.
- - Chart.js -> Creating, updating, deleting Charts
- - Vanilla JS method of $(document).ready  ```document.addEventListener("DOMContentLoaded", function() {```
- - /public files directories are dependent on where the template .ejs file is
-
- 
-
 ```
-https://github.com/vtange/polland/commit/6d58224d4209c47b2bed76a8c625029e4bbade85
+if (req.isAuthenticated()){
+	if (req.user._id.toString() == poll[0].asker.toString()){
+		master = true;
+	}
+}
 ```
-MongoDB
- - initDB file to create mock polls and mock users
- - Customizing/making new Models and interacting with them in MongoDB
- - ```.find({})``` and ```.findOne({})``` are async queries.
- 
- - Use ```async``` module to ```.waterfall``` connect async in serial fashion
+ - Login Check for Pages that require users
+```
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on 
+    if (req.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
+};
+```
+
+#### Backend
+ - Generate date and link for polls b4 saving
+ ```
+ pollSchema.pre('save', function(next) {
+  // get the current date
+  var currentDate = new Date();
+  var newLink = shortid.generate();
+	
+    // if postDate doesn't exist, add to that field
+  if (!this.postDate)
+    this.postDate = currentDate;
+
+  // if link doesn't exist, add to that field
+  if (!this.link)
+    this.link = newLink;
+
+  next();
+});
+ ```
  
