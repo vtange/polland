@@ -74,7 +74,6 @@ function isLoggedIn(req, res, next) {
 };
 ```
 
-#### Backend
  - Generate date and link for polls b4 saving
  ```
  pollSchema.pre('save', function(next) {
@@ -94,3 +93,5 @@ function isLoggedIn(req, res, next) {
 });
  ```
  
+##### Hindsight
+This app showcases the PROPER way of grabbing data from Mongo and sending it to Client in one go. Avoids multiple HTTP requests based on User's collected models. See "/" route. NOTE: Should've used promises for both Mongo Find() operations.
