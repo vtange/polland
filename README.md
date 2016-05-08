@@ -1,5 +1,6 @@
 ![alt tag](http://res.cloudinary.com/dmj8qtant/image/upload/c_limit,w_600/v1456084188/qxlepewnyqaopzt0osgl.png)
 # polland
+Client logs in and adds polls. Polls can be voted on and given more choices by other users. Client can only view results, share its link, or delete the poll. Can see published polls and own polls.
 
 ## Tech
 Express, EJS, MongoDB, AngularJS, Jquery, ChartJS, TimeAgo(livestamp + moment), ```shortid``` module, ```async``` module
